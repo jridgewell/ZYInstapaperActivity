@@ -8,10 +8,15 @@
 //  https://github.com/marianoabdala/ZYInstapaperActivity
 //
 
+#ifndef kBundlePath
+#   define kBundlePath @"/Library/ActivityLoader/ZYInstapaperActivity.bundle"
+#endif
+
 #import <UIKit/UIKit.h>
 
 @interface ZYActivityViewController : UIViewController
 
 @property (strong, nonatomic) UIActivity *activity;
+- (instancetype)initWithNibName:(NSString *)nibName bundle:(NSBundle *)nibBundle;
 
 @end

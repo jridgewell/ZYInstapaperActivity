@@ -17,4 +17,15 @@
     [self.activity activityDidFinish:YES];
 }
 
+- (instancetype)initWithNibName:(NSString *)nibName bundle:(NSBundle *)nibBundle {
+    if (nibBundle == nil) {
+        nibBundle = [NSBundle bundleWithPath:kBundlePath];
+        if (![nibBundle isLoaded]) {
+            [nibBundle load];
+        }
+    }
+    return [super initWithNibName:nibName bundle:nibBundle];
+}
+
+
 @end

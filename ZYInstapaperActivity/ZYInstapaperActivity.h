@@ -8,11 +8,14 @@
 //  https://github.com/marianoabdala/ZYInstapaperActivity
 //
 
+#define kBundlePath @"/Library/ActivityLoader/ZYInstapaperActivity.bundle"
+
 #import <Foundation/Foundation.h>
 #import <Security/Security.h>
+#import <ActivityLoader/ActivityLoader.h>
 #import "ZYActivity.h"
 
-@interface ZYInstapaperActivity : ZYActivity
+@interface ZYInstapaperActivity : ZYActivity <ALActivity>
 
 + (ZYInstapaperActivity *)instance;
 

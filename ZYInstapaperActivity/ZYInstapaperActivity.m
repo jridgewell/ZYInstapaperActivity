@@ -14,6 +14,7 @@
 #import "ZYCredentialsViewController.h"
 #import "ZYAddItemViewController.h"
 #import "ZYInstapaperActivitySecurity.h"
+#import "UIImage+ImageNamedExtension.h"
 
 @interface ZYInstapaperActivity ()
 
@@ -42,12 +43,12 @@
     if (idiom == UIUserInterfaceIdiomPhone) {
         
         activityImage =
-        [UIImage imageNamed:@"instapaper"];
+        [UIImage imageNamed:@"instapaper.png" fromDirectory:kBundlePath];
         
     } else if (idiom == UIUserInterfaceIdiomPad) {
 
         activityImage =
-        [UIImage imageNamed:@"instapaper-ipad"];
+        [UIImage imageNamed:@"instapaper-ipad.png" fromDirectory:kBundlePath];
         
     } else {
         
@@ -251,6 +252,13 @@
     
     self.activityItems =
     [NSArray arrayWithArray:mutableActivityItems];
+}
+
+#pragma mark ZYInstapaperActivity <ALActivity>
++ (void)load {
+    [[ALActivityLoader sharedInstance] registerActivity:[ZYInstapaperActivity instance]
+                                             identifier:@"com.zerously.mariano.ZYInstapaperActivity"
+                                                  title:@"Instapaper"];
 }
 
 @end
