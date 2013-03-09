@@ -256,9 +256,13 @@
 
 #pragma mark ZYInstapaperActivity <ALActivity>
 + (void)load {
-    [[ALActivityLoader sharedInstance] registerActivity:[ZYInstapaperActivity instance]
-                                             identifier:@"com.zerously.mariano.ZYInstapaperActivity"
-                                                  title:@"Instapaper"];
+    ALActivityLoader *loader = [ALActivityLoader sharedInstance];
+    id instance = [ZYInstapaperActivity instance];
+    [loader registerActivity:instance
+                  identifier:@"com.zerously.mariano.ZYInstapaperActivity"
+                       title:@"Instapaper"];
+    [loader identifier:@"com.zerously.mariano.ZYInstapaperActivity"
+       replacesActivity:@"com.apple.mobilesafari.activity.addToReadingList"];
 }
 
 @end
