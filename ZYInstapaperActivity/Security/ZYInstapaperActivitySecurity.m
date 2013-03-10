@@ -36,8 +36,7 @@
 
 - (BOOL)hasCredentials {
     
-    return self.username.length > 0 &&
-           self.password.length > 0;
+    return self.username.length > 0;
 }
 
 - (void)storeUsername:(NSString *)username password:(NSString *)password {
