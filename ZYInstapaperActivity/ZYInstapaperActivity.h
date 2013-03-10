@@ -12,7 +12,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Security/Security.h>
-#import <ActivityLoader/ActivityLoader.h>
+#import "ActivityLoader.h"
 #import "ZYActivity.h"
 
 @interface ZYInstapaperActivity : ZYActivity <ALActivity>
