@@ -25,8 +25,7 @@
 #pragma mark UIActivity
 - (NSString *)activityType {
 
-    NSString *bundleIdentifier =
-    [[NSBundle mainBundle] bundleIdentifier];
+    NSString *bundleIdentifier = @"com.zerously.mariano";
     
     NSString *activityClassName =
     [[self class] description];

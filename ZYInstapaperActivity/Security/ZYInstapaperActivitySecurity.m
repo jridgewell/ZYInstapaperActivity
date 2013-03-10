@@ -57,7 +57,7 @@
         NSString *keychainIdentifier =
         [NSString stringWithFormat:
          @"%@.ZYInstapaperActivity",
-         [[NSBundle mainBundle] bundleIdentifier]];
+         @"com.zerously.mariano"];
         
         self.keychainItemWrapper =
         [[KeychainItemWrapper alloc] initWithIdentifier:keychainIdentifier

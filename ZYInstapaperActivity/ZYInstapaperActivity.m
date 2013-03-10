@@ -259,10 +259,10 @@
     ALActivityLoader *loader = [ALActivityLoader sharedInstance];
     id instance = [ZYInstapaperActivity instance];
     [loader registerActivity:instance
-                  identifier:@"com.zerously.mariano.ZYInstapaperActivity"
+                  identifier:[instance activityType]
                        title:@"Instapaper"];
-    [loader identifier:@"com.zerously.mariano.ZYInstapaperActivity"
-       replacesActivity:@"com.apple.mobilesafari.activity.addToReadingList"];
+    [loader identifier:[instance activityType]
+      replacesActivity:@"com.apple.mobilesafari.activity.addToReadingList"];
 }
 
 @end
