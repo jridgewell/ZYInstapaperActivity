@@ -59,38 +59,36 @@
 }
 
 - (BOOL)canPerformWithActivityItems:(NSArray *)activityItems {
-
-    __block BOOL urlFound = NO;
-    
-    [activityItems enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-
-        //If it's an InstapaperActivityItem (internal, non-empty URL is guaranteed).
-        if ([obj isKindOfClass:[ZYInstapaperActivityItem class]] == YES) {
-            
-            urlFound    = YES;
-            *stop       = YES;
-            return;
-        }
-
-        //If it's a non-empty URL.
-        if ([obj isKindOfClass:[NSURL class]] == YES) {
-
-            urlFound    = YES;
-            *stop       = YES;
-            return;
-        }
-        
-        //If it's a well formated URL string.
-        if ([obj isKindOfClass:[NSString class]] == YES &&
-            [NSURL URLWithString:obj] != nil) {
-            
-            urlFound    = YES;
-            *stop       = YES;
-            return;
+	__block BOOL canPerform = NO;
+	[activityItems enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if ([self canPerformWithActivityItem:obj]) {
+            canPerform = YES;
+            *stop = YES;
         }
     }];
+	
+	return canPerform;
+}
+
+- (ZYInstapaperActivityItem *)canPerformWithActivityItem:(id)item {
+	//If it's a well formated URL string.
+	if ([item isKindOfClass:[NSString class]] == YES) {
+		item = [NSURL URLWithString:item];
+	}
+	//If it's a non-empty URL.
+	if ([item isKindOfClass:[NSURL class]] == YES) {
+		NSString *scheme = [item scheme];
+		if ([@[@"http", @"https"] containsObject:scheme]) {
+			item = [[ZYInstapaperActivityItem alloc] initWithURL:item];
+		}
+	}
     
-    return urlFound;
+	//If it's an InstapaperActivityItem (internal, non-empty URL is guaranteed).
+	if ([item isKindOfClass:[ZYInstapaperActivityItem class]] == YES) {
+		return item;
+	}
+	
+	return nil;
 }
 
 #pragma mark ZYActivity
